@@ -79,6 +79,7 @@ public class Check_login extends HttpServlet {
 						destination = "/Word/VocabularyList.jsp";
 						request.setAttribute("vocabularysArray", vocabularysArray);
 						request.setAttribute("user_id", user.getUserId());
+						request.setAttribute("username", user.getUsername());
 						rd = request.getRequestDispatcher(destination);
 						rd.forward(request, response);
 					}

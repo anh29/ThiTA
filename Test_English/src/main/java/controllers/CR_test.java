@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import models.bean.CodeTest;
 import models.bean.Quizizz;
 import models.bean.CodeTest;
+import models.bo.CRUD_quizizzBO;
 import models.bo.CR_testBO;
 
 /**
@@ -57,33 +58,48 @@ public class CR_test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CR_testBO CR_TestBO = new CR_testBO();
+		CRUD_quizizzBO CRUD_Quizizz_BO = new CRUD_quizizzBO();
 		ArrayList<CodeTest> CodeTestsArray = null;
 		ArrayList<Quizizz> quizizzsArray = null;
 		String destination;
 		String quizizz_id;
 		RequestDispatcher rd;
+		Integer generatedID;
 		if (request.getParameter("mod1") != null) {
-			if (request.getParameter("question") != null) {
-				// String question = request.getParameter("question");
-				// String answer_a = request.getParameter("answer_a");
-				// String answer_b = request.getParameter("answer_b");
-				// String answer_c = request.getParameter("answer_c");
-				// String answer_d = request.getParameter("answer_d");
-				// String answer = request.getParameter("answer");
-				// String explaination = request.getParameter("explaination");
-
-				// CR_TestBO.addCodeTest(question, answer_a, answer_b, answer_c, answer_d,
-				// answer, explaination);
-				// try {
-				// this.showListCodeTest(request, response);
-				// } catch (SQLException | ClassNotFoundException var16) {
-				// var16.printStackTrace();
-				// }
+			if (request.getParameter("name_test") != null) {
+				// Lấy giá trị của name_test từ form
+				String nameTest = request.getParameter("name_test");
+				try {
+					generatedID = CR_TestBO.AddCodeTest(nameTest);
+					// Lấy giá trị của các option được chọn
+					String[] selectedQuestions = request.getParameterValues("selectedQuestions");
+					if (selectedQuestions != null) {
+						for (String selectedQuestion : selectedQuestions) {
+							CR_TestBO.addListQuizizzInTest(generatedID, selectedQuestion);
+						}
+					}
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					this.showListCodeTest(request, response);
+				} catch (SQLException | ClassNotFoundException var16) {
+					var16.printStackTrace();
+				}
 			} else {
 				// ArrayList<String> idList = CR_TestBO.getAllIdCodeTest();
-				destination = "/CodeTest/Form_addCodeTest.jsp";
-				rd = request.getRequestDispatcher(destination);
-				rd.forward(request, response);
+				try {
+					quizizzsArray = CRUD_Quizizz_BO.getQuizizzList();
+					destination = "/Quizizz/QuizizzList.jsp";
+					request.setAttribute("quizizzsArray", quizizzsArray);
+					destination = "/Test/Form_addTest.jsp";
+					rd = request.getRequestDispatcher(destination);
+					rd.forward(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			// } else if (request.getParameter("mod2") != null) {
 			// switch (request.getParameter("mod2")) {

@@ -53,6 +53,6 @@
     </form>
     <h3><a href="CRUD_vocabulary?mod1=1">Thêm từ vựng</a></h3>
     <h3><a href="CRUD_vocabulary?mod4=1">Tìm kiếm từ vựng</a></h3>
-	<h3><a href="CRUD_quizizz">Danh sach de thi</a></h3>
+	<h3><a href="CR_test">Danh sach de thi</a></h3>
 </body>
 </html>

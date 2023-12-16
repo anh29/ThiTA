@@ -77,14 +77,14 @@ String jsonListEmail = "[\"" + String.join("\",\"", listEmail) + "\"]";
 	        if (listUsername[i].toString() === username) {
 	            errorInfor.value = "Tên đăng nhập đã tồn tại";
 	            return false;
-event.preventDefault(); 
+                event.preventDefault(); 
 	        }
 	    }
         for (var i = 0; i < listEmail.length; i++) {
 	        if (listEmail[i].toString() === email) {
 	            errorInfor.value = "Email đã tồn tại";
 	            return false;
-event.preventDefault(); 
+                event.preventDefault(); 
 	        }
 	    }
 	    return true;

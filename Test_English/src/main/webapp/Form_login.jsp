@@ -1,59 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<script>
-    function checkError(event) {
-        var username = document.login.username.value;
-        var password = document.login.password.value;
-        var errorInfor = document.login.errorInfor;
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html>
 
-        if (username === "" && password === "") {
-            errorInfor.value = "Bạn hãy nhập đầy đủ thông tin";
-            return false;
-        } else if (username === "") {
-            errorInfor.value = "Bạn hãy nhập username";
-            return false;
-        } else if (password === "") {
-            errorInfor.value = "Bạn hãy nhập password";
-            return false;
-        } else {
-            errorInfor.value = "";
+    <head>
+        <meta charset="UTF-8">
+        <title>DoTest</title>
+
+        <link rel="stylesheet" href="./assets/css/reset.css">
+        <link rel="stylesheet" href="./assets/css/Form_login.css">
+    </head>
+    <script>function checkError(event) {
+            var username = document.forms["login"]["username"].value;
+            var password = document.forms["login"]["password"].value;
+
+            if (username === "" || password === "") {
+                // Nếu có trường nào chưa nhập, hiển thị thông báo và ngăn chặn submit
+                document.getElementById("errorInfor").innerHTML = "Please fill in all fields.";
+
+                event.preventDefault(); // Ngăn chặn việc submit
+            }
         }
-        return true;
-    }
-</script>
+    </script>
 
-<body>
-    <form class="loginForm" name="login" action="Check_login" method="post"
-        onsubmit="return checkError(event)">
-        <h3>Đăng nhập hệ thống</h3>
-        <table>
-            <tr>
-                <td><label>Tên đăng nhập</label></td>
-                <td>
+    <body>
+        <div>
+            <p class="title-login">Welcome you to DoTest!</p>
+        </div>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form class="loginForm" name="login" action="Check_login" method="post" onsubmit="checkError(event)">
+                <div class="user-box">
                     <input class="inputInfor" name="username" type="text" placeholder="Please type username" value="" />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Mật khẩu</label></td>
-                <td>
+                    <label>Username</label>
+                </div>
+
+                <div class="user-box">
                     <input class="inputInfor" name="password" type="password" placeholder="Please type password"
                         value="" />
-                </td>
-            </tr>
-        </table>
-        <div class="btn_form">
-            <button type="submit" class="btn_submit" name="b1">OK</button>
-            <button type="reset" class="btn_reset">Huỷ</button>
+                    <label>Password</label>
+                </div>
+                <div class="btn_form user-box">
+                    <button type="submit" class="btn_submit btnSubmit" name="b1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Submit
+                    </button>
+                </div>
+                <p class="message">Not registered? <a href="Check_login?mod='register'" class="link">Create new
+                        account.</a></p>
+                <div id="errorInfor" class="label"></div>
+            </form>
         </div>
-        <input disabled style="border: 0; color:red;" class="label" name="errorInfor" value="" />
-        <a href="Check_login?mod='register'" >Dang ki</a>
-    </form>
-</body>
+    </body>
 
-</html>
+    </html>

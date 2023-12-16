@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ThiTA</name>
+	<comment></comment>
+	<projects>
+		<project>Servers</project>
+		<project>Test_English</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.bean.Vocabulary;
 import models.bo.CRUD_vocabularyBO;
@@ -26,11 +27,16 @@ public class CRUD_vocabulary extends HttpServlet {
 
 	protected void showListVocabulary(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, ServletException, IOException {
-		String user_id = request.getParameter("user_id");
+		// Lấy hoặc tạo session từ request
+		HttpSession session = request.getSession();
+		// Lấy giá trị từ session
+		Object user_id_ss = session.getAttribute("user_id");
+		Integer user_id = (Integer) user_id_ss;
+		System.out.println("User ID from session: " + user_id_ss);
+
 		CRUD_vocabularyBO CRUD_Vocabulary_BO = new CRUD_vocabularyBO();
 		ArrayList<Vocabulary> vocabularysArray = CRUD_Vocabulary_BO.getVocabularyList(user_id);
 		String destination = "/Word/VocabularyList.jsp";
-		request.setAttribute("user_id", user_id);
 		request.setAttribute("vocabularysArray", vocabularysArray);
 		RequestDispatcher rd = request.getRequestDispatcher(destination);
 		rd.forward(request, response);
@@ -38,15 +44,21 @@ public class CRUD_vocabulary extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Lấy hoặc tạo session từ request
+		HttpSession session = request.getSession();
+		// Lấy giá trị từ session
+		Object user_id_ss = session.getAttribute("user_id");
+		Integer user_id = (Integer) user_id_ss;
+		System.out.println("User ID from session: " + user_id_ss);
+
 		CRUD_vocabularyBO CRUD_Vocabulary_BO = new CRUD_vocabularyBO();
 		ArrayList<Vocabulary> vocabularysArray = null;
 		String destination;
 		String word_id;
 		RequestDispatcher rd;
 		Vocabulary vocabulary;
-		String user_id = request.getParameter("user_id");
 		if (request.getParameter("mod1") != null) {
-			if (request.getParameter("user_id") != null && request.getParameter("word") != null) {
+			if (user_id != null && request.getParameter("word") != null) {
 				String word = request.getParameter("word");
 				String definition = request.getParameter("definition");
 				String pronunciation = request.getParameter("pronunciation");
@@ -62,8 +74,6 @@ public class CRUD_vocabulary extends HttpServlet {
 					var16.printStackTrace();
 				}
 			} else {
-				// ArrayList<String> idList = CRUD_Vocabulary_BO.getAllIdVocabulary();
-				request.setAttribute("user_id", user_id);
 				destination = "/Word/Form_addVocabulary.jsp";
 				rd = request.getRequestDispatcher(destination);
 				rd.forward(request, response);
@@ -118,7 +128,7 @@ public class CRUD_vocabulary extends HttpServlet {
 			}
 
 		} else if (request.getParameter("mod4") != null) {
-			
+
 			if (request.getParameter("infor") != null) {
 				vocabularysArray = CRUD_Vocabulary_BO.seekingVocabulary(user_id,
 						request.getParameter("infor"));
@@ -139,6 +149,12 @@ public class CRUD_vocabulary extends HttpServlet {
 			request.setAttribute("vocabulary", vocabulary);
 			rd = request.getRequestDispatcher(destination);
 			rd.forward(request, response);
+		} else {
+			try {
+				this.showListVocabulary(request, response);
+			} catch (SQLException | ClassNotFoundException var16) {
+				var16.printStackTrace();
+			}
 		}
 
 	}

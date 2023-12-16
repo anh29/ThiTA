@@ -44,5 +44,6 @@
         <p>Không có từ vựng nào được tìm thấy</p>
     <% } %>
     <a href="javascript:history.back()">Back</a>
+    <h3><a href="CRUD_vocabulary">Home page</a></h3>
 </body>
 </html>

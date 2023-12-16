@@ -10,13 +10,13 @@
     <% 
         Object user_id = request.getAttribute("user_id");
     %>
-    <form name="form1" action="CRUD_vocabulary?mod4=1&&user_id=<%= user_id.toString() %>" onsubmit="return checkInput()" method="post">
+    <form name="form1" action="CRUD_vocabulary?mod4=1" onsubmit="return checkInput()" method="post">
         <input type="text" name="infor" id="infor">
         <input type="submit" value="FIND">
         <span id="warning" style="display: none; color: red;">Hãy nhập thông tin</span>
     </form>
-    <a href="javascript:history.back()">Back</a>
-
+    <a href="javascript:history.back()">Back</a>    
+    <h3><a href="CRUD_vocabulary">Home page</a></h3>
     <script>
         function checkInput() {
             var inputValue = document.getElementById("infor").value;

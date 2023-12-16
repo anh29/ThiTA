@@ -12,14 +12,14 @@ public class CRUD_vocabularyBO {
 	public CRUD_vocabularyBO() {
 	}
 
-	public ArrayList<Vocabulary> getVocabularyList(String user_id) throws ClassNotFoundException, SQLException {
-		return this.vocabularyDAO.getVocabularyList(Integer.parseInt(user_id));
+	public ArrayList<Vocabulary> getVocabularyList(Integer user_id) throws ClassNotFoundException, SQLException {
+		return this.vocabularyDAO.getVocabularyList(user_id);
 	}
 
 	public void addVocabulary(String word, String definition, String pronunciation, String speech, String synonyms,
-			String antonyms, String examples, String ID_user) {
+			String antonyms, String examples, Integer ID_user) {
 		this.vocabularyDAO.addVocabulary(word, definition, pronunciation, speech, synonyms,
-				antonyms, examples, Integer.parseInt(ID_user));
+				antonyms, examples, ID_user);
 	}
 
 	// public ArrayList<String> getAllIdVocabulary() {
@@ -40,7 +40,7 @@ public class CRUD_vocabularyBO {
 		this.vocabularyDAO.deleteVocabulary(id);
 	}
 
-	public ArrayList<Vocabulary> seekingVocabulary(String user_id, String word) {
-		return this.vocabularyDAO.seekingVocabulary(Integer.parseInt(user_id), word);
+	public ArrayList<Vocabulary> seekingVocabulary(Integer user_id, String word) {
+		return this.vocabularyDAO.seekingVocabulary(user_id, word);
 	}
 }

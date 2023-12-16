@@ -12,7 +12,7 @@
 	Object user_id = request.getAttribute("user_id");
 %>
 
-	<form action="CRUD_vocabulary?mod1=1&&user_id=<%= user_id.toString() %>" method="post" name="f1" onsubmit="return checkForm()">
+	<form action="CRUD_vocabulary?mod1=1" method="post" name="f1" onsubmit="return checkForm()">
 	    <table>
 	        <th>Them từ vựng</th>
 			
@@ -51,7 +51,7 @@
 	    </div>
 	</form>
 	<span id="warning" style="display: none; color: red;"></span>
-
+	<a href="javascript:history.back()">Back</a>
 </body>
 	<script>
 		<%-- var idList = <%= (idList) %>;

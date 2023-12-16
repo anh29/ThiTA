@@ -8,8 +8,7 @@
 </head>
 
 <body>
-
-	    <form action="CRUD_quizizz?mod1=1" method="post" name="f1" onsubmit="return checkForm()">
+	<form action="CRUD_quizizz?mod1=1" method="post" name="f1" onsubmit="return checkForm()">
         <table>
             <th>Thêm câu hỏi</th>
 

@@ -41,8 +41,9 @@
             </tbody>
         </table>
     <% } else { %>
-        <p>Không có từ vựng nào được tìm thấy</p>
+        <p>Không có cau hoi nào được tìm thấy</p>
     <% } %>
     <a href="javascript:history.back()">Back</a>
+    <h3><a href="CRUD_quizizz">Home page</a></h3>
 </body>
 </html>

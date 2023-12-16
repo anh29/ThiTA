@@ -62,7 +62,7 @@ public class Check_login extends HttpServlet {
 				} else {
 					CRUD_vocabularyBO CRUD_Vocabulary_BO = new CRUD_vocabularyBO();
 					ArrayList<Vocabulary> vocabularysArray = CRUD_Vocabulary_BO
-							.getVocabularyList(String.valueOf(user.getUserId()));
+							.getVocabularyList(user.getUserId());
 					destination = "/Word/VocabularyList.jsp";
 					request.setAttribute("vocabularysArray", vocabularysArray);
 					request.setAttribute("user_id", user.getUserId());

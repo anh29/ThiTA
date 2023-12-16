@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.bean.Quizizz;
 import models.bo.CRUD_quizizzBO;
@@ -26,9 +27,17 @@ public class CRUD_quizizz extends HttpServlet {
 
 	protected void showListQuizizz(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, ServletException, IOException {
+		// Lấy hoặc tạo session từ request
+		HttpSession session = request.getSession();
+		// Lấy giá trị từ session
+		Object user_id_ss = session.getAttribute("user_id");
+		Integer user_id = (Integer) user_id_ss;
+		System.out.println("User ID from session: " + user_id_ss);
+		
 		CRUD_quizizzBO CRUD_Quizizz_BO = new CRUD_quizizzBO();
 		ArrayList<Quizizz> quizizzsArray = CRUD_Quizizz_BO.getQuizizzList();
 		String destination = "/Quizizz/QuizizzList.jsp";
+		request.setAttribute("user_id", user_id);
 		request.setAttribute("quizizzsArray", quizizzsArray);
 		RequestDispatcher rd = request.getRequestDispatcher(destination);
 		rd.forward(request, response);

@@ -34,13 +34,13 @@
         <h3>Đăng nhập hệ thống</h3>
         <table>
             <tr>
-                <td><label>Username</label></td>
+                <td><label>Tên đăng nhập</label></td>
                 <td>
                     <input class="inputInfor" name="username" type="text" placeholder="Please type username" value="" />
                 </td>
             </tr>
             <tr>
-                <td><label>Password</label></td>
+                <td><label>Mật khẩu</label></td>
                 <td>
                     <input class="inputInfor" name="password" type="password" placeholder="Please type password"
                         value="" />
@@ -51,7 +51,8 @@
             <button type="submit" class="btn_submit" name="b1">OK</button>
             <button type="reset" class="btn_reset">Huỷ</button>
         </div>
-        <input disabled style="border: 0;" class="label" name="errorInfor" value="" />
+        <input disabled style="border: 0; color:red;" class="label" name="errorInfor" value="" />
+        <a href="Check_login?mod='register'" >Dang ki</a>
     </form>
 </body>
 

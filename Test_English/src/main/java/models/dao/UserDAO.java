@@ -40,5 +40,37 @@ public class UserDAO {
 		}
 
 		return user;
+	}    
+    public void createUser(String username, String password, String email) throws ClassNotFoundException, SQLException {
+    	
+		String sql = "INSERT INTO user(username, password, email) VALUES(?, ?, ?)";
+		PreparedStatement pstmt = this.connectionSQL(sql);
+		pstmt.setString(1, username);		
+        pstmt.setString(2, password);
+        pstmt.setString(3, email);
+		pstmt.executeUpdate();
 	}
+    
+    public ArrayList<String> getListUsername() throws ClassNotFoundException, SQLException {
+    	ArrayList<String> listUsername = new ArrayList<String>();
+    	String sql = "Select username FROM user";
+    	PreparedStatement pstmt = this.connectionSQL(sql);
+    	
+    	ResultSet rs = pstmt.executeQuery();
+    	while(rs.next()) {
+    		listUsername.add(rs.getString("username"));
+    	}
+    	return listUsername;
+    }
+    public ArrayList<String> getListEmail() throws ClassNotFoundException, SQLException {
+    	ArrayList<String> listEmail = new ArrayList<String>();
+    	String sql = "Select email FROM user";
+    	PreparedStatement pstmt = this.connectionSQL(sql);
+    	
+    	ResultSet rs = pstmt.executeQuery();
+    	while(rs.next()) {
+    		listEmail.add(rs.getString("email"));
+    	}
+    	return listEmail;
+    }
 }

@@ -10,8 +10,9 @@
 <body>
     <% 
         ArrayList<Vocabulary> vocabularysArray = (ArrayList<Vocabulary>) request.getAttribute("vocabularysArray"); 
+	
         Object user_id = request.getAttribute("user_id");
-        
+        String username = (String) request.getAttribute("username");
         // Kiểm tra xem user_id có tồn tại không
         if (user_id != null) {
             // Lấy hoặc tạo một phiên
@@ -24,9 +25,9 @@
             getServletContext().log("Đã đặt user_id vào phiên");
         }
     %>
+	<% out.println("name: " + username); %>
     <h3>Danh sách từ vựng</h3>
     <form action="CRUD_vocabulary?mod3=1" method="post">
-
         <table border="1" width="100%">
             <thead>
                 <tr>

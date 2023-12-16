@@ -186,4 +186,9 @@ body {
 .label {
   color: red;
   margin-top: 10px;
+  background-color: #fff0;
+    width: 40vh;
+    height: 34px;
+    text-align: center;
+    align-items: center;
 }

@@ -28,7 +28,10 @@
                 <%int index = 1; for (CodeTest codeTest : CodeTestsArray) { %>
                     <tr>
                         <td><%= index++ %></td>
-                        <td><a href="CR_test?ID_test=<%= codeTest.getId() %>"><%= codeTest.getName() %></a></td>
+                        <td><%= codeTest.getName() %></td>
+                        <td><a href="CR_test?ID_test=<%= codeTest.getId() %>">Do test</a></td>
+                        <%-- <td><a href="CRUD_vocabulary?mod2=1&&word_id=<%= vocabulary.getWordId() %>">...</a></td>
+                        <td><input type="checkbox" name="vocabularyId[]" value="<%= vocabulary.getWordId() %>"></td> --%>
                     </tr>
                 <% } %>
             </tbody>

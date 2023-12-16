@@ -56,7 +56,7 @@
         
     <p class="message">You already had account? <a href="Form_login.jsp" class="link">Login here.</a></p>
    
-    <input id="errorInfor" disabled style="border: 0; color:red; width:200px;" class="label" name="errorInfor" value="" />
+    <input id="errorInfor" class="label" name="errorInfor" value="" />
 </form>
      
                 
@@ -77,14 +77,14 @@
 	        if (listUsername[i].toString() === username) {
 	            errorInfor.value = "Tên đăng nhập đã tồn tại";
 	            return false;
-                event.preventDefault(); 
+event.preventDefault(); 
 	        }
 	    }
         for (var i = 0; i < listEmail.length; i++) {
 	        if (listEmail[i].toString() === email) {
 	            errorInfor.value = "Email đã tồn tại";
 	            return false;
-                event.preventDefault(); 
+event.preventDefault(); 
 	        }
 	    }
 	    return true;

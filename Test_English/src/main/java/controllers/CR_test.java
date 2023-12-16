@@ -167,15 +167,15 @@ public class CR_test extends HttpServlet {
 			// rd.forward(request, response);
 			// }
 		} else if (request.getParameter("ID_test") != null) {
-			try {
-				quizizzsArray = CR_TestBO.getQuizizzInTest(request.getParameter("ID_test"));
-				destination = "/Test/FormDoTest.jsp";
-				request.setAttribute("quizizzsArray", quizizzsArray);
-				rd = request.getRequestDispatcher(destination);
-				rd.forward(request, response);
-			} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
+				try {
+					quizizzsArray = CR_TestBO.getQuizizzInTest(request.getParameter("ID_test"));
+					destination = "/Test/FormDoTest.jsp";
+					request.setAttribute("quizizzsArray", quizizzsArray);
+					rd = request.getRequestDispatcher(destination);
+					rd.forward(request, response);
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
 		} else {
 			try {
 				this.showListCodeTest(request, response);

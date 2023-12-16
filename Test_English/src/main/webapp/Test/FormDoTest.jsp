@@ -5,29 +5,40 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Quizizz List</title>
+    <title>Do Quizizz</title>
+    <script>
+        function logData(event) {
+            var formData = new FormData(document.getElementById("quizForm"));
+            var questionIds = document.querySelectorAll('input[name^="questionIds"]');
+            var resultDiv = document.getElementById("result");
+            var resultsHTML = "";
+
+            questionIds.forEach(function (questionIdInput) {
+                var questionId = questionIdInput.value;
+                var userAnswer = formData.get('userAnswers_' + questionId);
+                var correctAnswer = formData.get('questionAnswer_' + questionId);
+                var explanation = formData.get('questionExp_' + questionId);
+                
+                formData.set('userAnswers_' + questionId, userAnswer || 'null');
+
+                var result = (userAnswer === correctAnswer) ? 'Correct' : 'Incorrect';
+                resultsHTML += '<p>Question ' + questionId + ': ' + result + '</p>';
+                if (explanation !== 'null') {
+                    resultsHTML += '<p>' + explanation + '</p>';
+                }
+            });
+
+            resultDiv.innerHTML = resultsHTML;
+            event.preventDefault;
+        }
+    </script>
 </head>
 <body>
     <% 
         ArrayList<Quizizz> quizizzsArray = (ArrayList<Quizizz>) request.getAttribute("quizizzsArray"); 
-        // Object user_id = null;
-        // if (request.getAttribute("user_id") != null) {
-        //     user_id = request.getAttribute("user_id");
-        // }        
-        // // Kiểm tra xem user_id có tồn tại không
-        // if (user_id != null) {
-        //     // Lấy hoặc tạo một phiên
-        //     HttpSession ss = request.getSession();
-            
-        //     // Đặt giá trị user_id vào phiên
-        //     ss.setAttribute("user_id", user_id);
-            
-        //     // In ra thông báo hoặc thực hiện các hành động khác nếu cần thiết
-        //     getServletContext().log("Đã đặt user_id vào phiên");
-        // } 
     %>
-    <h3>Danh sách câu hỏi</h3>
-    <form action="CRUD_quizizz?mod3=1" method="post">
+    <h3>Thực hiện bài thi</h3>
+    <form id="quizForm" onsubmit="logData(event); return false;">
 
         <table border="1" width="100%">
             <thead>
@@ -38,7 +49,6 @@
                     <th>AnswerB</th>
                     <th>AnswerC</th>
                     <th>AnswerD</th>
-                    <th>Answer</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,22 +56,21 @@
                     <tr>                        
                         <td><%= index++ %></td>
                         <td><%= quizizz.getQuestion() %></td>
-                        <td><%= quizizz.getAnswerA() %></td>
-                        <td><%= quizizz.getAnswerB() %></td>
-                        <td><%= quizizz.getAnswerC() %></td>
-                        <td><%= quizizz.getAnswerD() %></td>
-                        <td><%= quizizz.getAnswer() %></td>
+                        <td><input type="radio" name="userAnswers_<%= quizizz.getQuizizzId() %>" value="<%= quizizz.getAnswerA() %>" /> <%= quizizz.getAnswerA() %></td>
+                        <td><input type="radio" name="userAnswers_<%= quizizz.getQuizizzId() %>" value="<%= quizizz.getAnswerB() %>" /> <%= quizizz.getAnswerB() %></td>
+                        <td><input type="radio" name="userAnswers_<%= quizizz.getQuizizzId() %>" value="<%= quizizz.getAnswerC() %>" /> <%= quizizz.getAnswerC() %></td>
+                        <td><input type="radio" name="userAnswers_<%= quizizz.getQuizizzId() %>" value="<%= quizizz.getAnswerD() %>" /> <%= quizizz.getAnswerD() %></td>
+                        
+                        <input type="hidden" name="questionIds" value="<%= quizizz.getQuizizzId() %>"/>
+                        <input type="hidden" name="questionAnswer_<%= quizizz.getQuizizzId() %>" value="<%= quizizz.getAnswer() %>"/>
+                        <input type="hidden" name="questionExp_<%= quizizz.getQuizizzId() %>" value="<%= quizizz.getExplaination() %>"/>
                     </tr>
                 <% } %>
             </tbody>
         </table>
-        <%-- <% if (user_id != null && user_id.equals(1)) { %> --%>
-        <%-- <input type="submit" value="Delete"/> --%>
-        <%-- <% } %> --%>
+        <br>
+        <input type="submit" value="Submit Test"/>
+        <div id="result"></div>
     </form>
-    <%-- <% if (user_id != null && user_id.equals(1)) { %>
-        <h3>2. <a href="CRUD_quizizz?mod1=1">Thêm câu hỏi</a></h3>
-        <h3>3. <a href="CRUD_quizizz?mod4=1">Tìm kiếm câu hỏi</a></h3>
-    <% } %> --%>
 </body>
 </html>

@@ -1,72 +1,91 @@
 package models.bean;
 
 public class RecordTest {
-    private int record_id;
-    private int test_id;
-    private int student_id;
-    private int quizizz_id;
-    private String student_answer;
-    private String word_day;
+    private int recordId;
+    private int testId;
+    private int studentId;
+    private int quizizzId;
+    private String studentAnswer;
+    private String wordDay;
 
-    // Constructors
-    public RecordTest() {
+    // thuộc tính thêm này dùng để show
+    private String question;
+    private String correctAnswer;
+    private String nameTest;
+
+    public int getRecordId() {
+        return recordId;
     }
 
-    // public RecordTest(int record_id, int test_id, int student_id, int quizizz_id, String student_answer, String word_day) {
-    //     this.record_id = record_id;
-    //     this.test_id = test_id;
-    //     this.student_id = student_id;
-    //     this.quizizz_id = quizizz_id;
-    //     this.student_answer = student_answer;
-    //     this.word_day = word_day;
-    // }
-
-    // Getter and Setter methods
-    public int getRecord_id() {
-        return record_id;
+    public void setRecordId(int recordId) {
+        this.recordId = recordId;
     }
 
-    public void setRecord_id(int record_id) {
-        this.record_id = record_id;
+    public int getTestId() {
+        return testId;
     }
 
-    public int getTest_id() {
-        return test_id;
+    public void setTestId(int testId) {
+        this.testId = testId;
     }
 
-    public void setTest_id(int test_id) {
-        this.test_id = test_id;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public int getQuizizzId() {
+        return quizizzId;
     }
 
-    public int getQuizizz_id() {
-        return quizizz_id;
+    public void setQuizizzId(int quizizzId) {
+        this.quizizzId = quizizzId;
     }
 
-    public void setQuizizz_id(int quizizz_id) {
-        this.quizizz_id = quizizz_id;
+    public String getStudentAnswer() {
+        return studentAnswer;
     }
 
-    public String getStudent_answer() {
-        return student_answer;
+    public void setStudentAnswer(String studentAnswer) {
+        this.studentAnswer = studentAnswer;
     }
 
-    public void setStudent_answer(String student_answer) {
-        this.student_answer = student_answer;
+    public String getWordDay() {
+        return wordDay;
     }
 
-    public String getWord_day() {
-        return word_day;
+    public void setWordDay(String wordDay) {
+        this.wordDay = wordDay;
     }
 
-    public void setWord_day(String word_day) {
-        this.word_day = word_day;
+    // Getter for 'question'
+    public String getQuestion() {
+        return question;
+    }
+
+    // Setter for 'question'
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    // Getter for 'correctAnswer'
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    // Setter for 'correctAnswer'
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public String getNameTest() {
+        return nameTest;
+    }
+
+    public void setNameTest(String nameTest) {
+        this.nameTest = nameTest;
     }
 }

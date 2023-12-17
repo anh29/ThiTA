@@ -37,7 +37,7 @@
             </tbody>
         </table>
     </form>
-    
+    <a href="javascript:history.back()">Back</a>
     <%-- Kiểm tra giá trị session và hiển thị phần của trang web nếu cần --%>
     <% if (user_id != null && user_id == 1) { %>
         <h3><a href="CR_test?mod1=1">Thêm de thi</a></h3>

@@ -38,8 +38,7 @@
         ArrayList<Quizizz> quizizzsArray = (ArrayList<Quizizz>) request.getAttribute("quizizzsArray"); 
     %>
     <h3>Thực hiện bài thi</h3>
-    <form id="quizForm" onsubmit="logData(event); return false;">
-
+    <form id="quizForm" action="CR_recordTest?mod1=1" onsubmit="logData(event)">
         <table border="1" width="100%">
             <thead>
                 <tr>

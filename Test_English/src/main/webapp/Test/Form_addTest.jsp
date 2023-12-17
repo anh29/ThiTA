@@ -50,7 +50,7 @@
         </div>
     </form>
     <span id="warning" style="display: none; color: red;"></span>
-
+	<a href="javascript:history.back()">Back</a>
     <script>
         function checkForm() {
             var nameTestInput = document.forms.f1.name_test.value;

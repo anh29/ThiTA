@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+.head {
+	display: flex;
+    justify-content: space-between;
+    padding: 0 10vh;
+}
+
+.head h3 {
+	font-size: 30px;
+    font-weight: bold;
+}
+
+.wrapper {
+  width: 100%;
+  padding-top: 10vh;
+}
+
+.wrapper i {
+  height: 50px;
+  width: 50px;
+  background: #fff;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 1.25rem;
+  transform: translateY(-50%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.wrapper i:first-child {
+  left: 40px;
+  z-index: 1;
+}
+
+.wrapper i:last-child {
+  right: 40px;
+}
+
+.wrapper .carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel :where(.card, .img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel .card {
+    height: 342px;
+    list-style: none;
+    background: #e4f4ff;
+    border-radius: 8px;
+    padding-bottom: 15px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 10px rgb(255 4 4 / 31%);
+}
+
+.card .img {
+  background: #ab82ff;
+  width: fit-content;
+  height: 148px;
+  border-radius: 10%;
+  min-width: 260px;flex-flow: column;
+}
+
+.card .word {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;font-weight: 900;	
+}
+
+.card h2 {
+  font-weight: 500;
+  font-size: 1.26rem;
+  margin: 30px 0 5px;
+}
+
+.card span {
+  color: #6a6d78;
+  font-size: 1.31rem;
+}
+
+.desc {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 34px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.card input[type="checkbox"] {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transform: scale(3);
+}
+
+.opt {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 50px;
+}
+@media screen and (max-width: 900px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
+  }
+}

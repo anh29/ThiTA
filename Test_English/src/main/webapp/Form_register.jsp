@@ -12,8 +12,8 @@
 </head>
 <% ArrayList<String> listUsername = (ArrayList<String>) request.getAttribute("listUsername");
     ArrayList<String> listEmail = (ArrayList<String>) request.getAttribute("listEmail");
-	String jsonListUsername = "[\"" + String.join("\",\"", listUsername) + "\"]";
-	String jsonListEmail = "[\"" + String.join("\",\"", listEmail) + "\"]";
+String jsonListUsername = "[\"" + String.join("\",\"", listUsername) + "\"]";
+String jsonListEmail = "[\"" + String.join("\",\"", listEmail) + "\"]";
 %>
 
 <body>
@@ -135,7 +135,7 @@ event.preventDefault();
 			event.preventDefault(); 
            	return false;
        	}       
-       	
+       
         return true;
     }
 </script>

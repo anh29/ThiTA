@@ -15,7 +15,7 @@
         <input type="submit" value="FIND">
         <span id="warning" style="display: none; color: red;">Hãy nhập thông tin</span>
     </form>
-    <a href="javascript:history.back()">Back</a>    
+  
     <h3><a href="CRUD_vocabulary">Home page</a></h3>
     <script>
         function checkInput() {

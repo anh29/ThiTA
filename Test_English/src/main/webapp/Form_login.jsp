@@ -8,19 +8,10 @@
 
         <link rel="stylesheet" href="./assets/css/reset.css">
         <link rel="stylesheet" href="./assets/css/Form_login.css">
+        
+        
+       <script src="./assets/js/confirmForm.js" defer></script>
     </head>
-    <script>function checkError(event) {
-            var username = document.forms["login"]["username"].value;
-            var password = document.forms["login"]["password"].value;
-
-            if (username === "" || password === "") {
-                // Nếu có trường nào chưa nhập, hiển thị thông báo và ngăn chặn submit
-                document.getElementById("errorInfor").innerHTML = "Please fill in all fields.";
-
-                event.preventDefault(); // Ngăn chặn việc submit
-            }
-        }
-    </script>
 
     <body>
         <div>
@@ -28,7 +19,7 @@
         </div>
         <div class="login-box">
             <h2>Login</h2>
-            <form class="loginForm" name="login" action="Check_login" method="post" onsubmit="checkError(event)">
+            <form class="loginForm" name="login" action="Check_login" method="post" onsubmit="checkErrorLogin(event)">
                 <div class="user-box">
                     <input class="inputInfor" name="username" type="text" placeholder="Please type username" value="" />
                     <label>Username</label>

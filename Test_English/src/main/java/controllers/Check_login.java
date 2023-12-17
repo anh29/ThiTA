@@ -76,7 +76,7 @@ public class Check_login extends HttpServlet {
 						CRUD_vocabularyBO CRUD_Vocabulary_BO = new CRUD_vocabularyBO();
 						ArrayList<Vocabulary> vocabularysArray = CRUD_Vocabulary_BO
 								.getVocabularyList(user.getUserId());
-						destination = "/Word/VocabularyList.jsp";
+						destination = "/home.jsp";
 						request.setAttribute("vocabularysArray", vocabularysArray);
 						request.setAttribute("user_id", user.getUserId());
 						request.setAttribute("username", user.getUsername());

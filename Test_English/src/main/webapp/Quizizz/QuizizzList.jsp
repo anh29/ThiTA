@@ -35,8 +35,10 @@
                     <th>STT</th>
                     <th>Question</th>
                     <th>Answer</th>
-                    <th>Update</th>
-                   	<th>Select</th>
+                    <% if (user_id != null && user_id.equals(1)) { %>
+                        <th>Update</th>
+                    	<th>Select</th>
+                    <% } %>
                 </tr>
             </thead>
             <tbody>
@@ -45,16 +47,21 @@
                         <td><%= index++ %></td>
                         <td><a href="CRUD_quizizz?quizizz_id=<%= quizizz.getQuizizzId()%>"><%= quizizz.getQuestion() %></a></td>
                         <td><%= quizizz.getAnswer() %></td>
-                        <td><a href="CRUD_quizizz?mod2=1&&quizizz_id=<%= quizizz.getQuizizzId() %>">...</a></td>
-                       	<td><input type="checkbox" name="quizizzId[]" value="<%= quizizz.getQuizizzId() %>"></td>
+                        <% if (user_id != null && user_id.equals(1)) { %>
+                            <td><a href="CRUD_quizizz?mod2=1&&quizizz_id=<%= quizizz.getQuizizzId() %>">...</a></td>
+                        	<td><input type="checkbox" name="quizizzId[]" value="<%= quizizz.getQuizizzId() %>"></td>
+                        <% } %>
                     </tr>
                 <% } %>
             </tbody>
         </table>
+        <% if (user_id != null && user_id.equals(1)) { %>
         <input type="submit" value="Delete"/>
+        <% } %>
     </form>
-       <h3><a href="CRUD_quizizz?mod1=1">Thêm câu hỏi</a></h3>
-       <h3><a href="CRUD_quizizz?mod4=1">Tìm kiếm câu hỏi</a></h3>
-       <h3><a href="CR_test">Danh sach de thi</a></h3>
+    <% if (user_id != null && user_id.equals(1)) { %>
+        <h3>2. <a href="CRUD_quizizz?mod1=1">Thêm câu hỏi</a></h3>
+        <h3>3. <a href="CRUD_quizizz?mod4=1">Tìm kiếm câu hỏi</a></h3>
+    <% } %>
 </body>
 </html>

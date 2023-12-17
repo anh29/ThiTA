@@ -1,0 +1,33 @@
+
+        #navigation {
+                background-color: #3498db;
+    color: #fff;
+    padding: 24px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 21px;
+        }
+
+.center {
+text-align: center;}
+        #navigation a {
+            text-decoration: none; /* Loại bỏ gạch chân cho liên kết */
+    color: #fff; /* Màu chữ mặc định */
+    padding: 10px 20px; /* Kích thước nút */
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+    border-radius: 5px; /* Góc bo tròn */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #navigation a:hover {
+    background-color: #2980b9; /* Màu nền khi di chuột qua */
+    transform: scale(1.05); /* Hiệu ứng phóng to khi di chuột qua */
+}
+
+        #navigation .active {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        #content {
+            padding: 20px;
+        }

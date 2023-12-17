@@ -36,7 +36,7 @@ public class CRUD_vocabulary extends HttpServlet {
 
 		CRUD_vocabularyBO CRUD_Vocabulary_BO = new CRUD_vocabularyBO();
 		ArrayList<Vocabulary> vocabularysArray = CRUD_Vocabulary_BO.getVocabularyList(user_id);
-		String destination = "/Word/VocabularyList.jsp";
+		String destination = "/home.jsp";
 		request.setAttribute("vocabularysArray", vocabularysArray);
 		RequestDispatcher rd = request.getRequestDispatcher(destination);
 		rd.forward(request, response);

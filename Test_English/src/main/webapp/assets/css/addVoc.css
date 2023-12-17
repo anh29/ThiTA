@@ -1,0 +1,60 @@
+ 
+        .form-container {
+            width: 50%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .custom-table th, .custom-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .custom-table th {
+            background-color: #f9e5e5;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #a94442; /* Reddish tone for a touch of romance */
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-container {
+            margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+    font-size: 28px;
+        }
+        
+        .btn-container input {
+			padding: 5px 10px;
+    border: none;
+    background-color: #bfe5ff;
+    border-radius: 10px;
+    height: 40px;
+		}
+
+        .hidden-warning {
+            display: none;color: #ff0500;
+    font-size: 20px; }
